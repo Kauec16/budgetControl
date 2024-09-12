@@ -1,15 +1,23 @@
 package org.BudgetControl.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "tb_user")
 public class User {
 
+    @Id
     private int id;
     private String username;
     private String password;
+
+
 
     public User() {
     }

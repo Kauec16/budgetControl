@@ -1,19 +1,23 @@
 package org.BudgetControl.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-public class Expanses {
+@Table(name = "tb_Expanses") // so é necessario se o nome da tabela for diferente da classe
+public class Expense {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String description;
     private double price;
 
-    public Expanses() {
+    public Expense() {
     }
 
-    public Expanses(int id, String description, double price) {
+    public Expense(int id, String description, double price) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -23,7 +27,7 @@ public class Expanses {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Expanses expanses = (Expanses) o;
+        Expense expanses = (Expense) o;
         return getId() == expanses.getId() && Double.compare(price, expanses.price) == 0 && Objects.equals(getDescription(), expanses.getDescription());
     }
 
